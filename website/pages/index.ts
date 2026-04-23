@@ -1,21 +1,13 @@
-import type { Item } from "types";
-import { send } from "clientUtilities";
-import { create } from "componentUtilities";
+var sButton = document.querySelector<HTMLInputElement>("#subB")!;
+var aButton = document.querySelector<HTMLButtonElement>("#addB")!;
+var myDiv = document.querySelector<HTMLDivElement>("#Div")!;
 
-var itemInput = document.querySelector<HTMLInputElement>("#itemInput")!;
-var amountInput = document.querySelector<HTMLInputElement>("#amountInput")!;
-var addButton = document.querySelector<HTMLButtonElement>("#addButton")!;
-var itemsUl = document.querySelector<HTMLUListElement>("#itemsUl")!;
 
-var items = await send<Item[]>("getItems");
-
-for (var i = 0; i < items.length; i++) {
-  var itemLi = create("li");
-  itemLi.innerText = `${items[i].amount} ${items[i].name}`;
-  itemsUl.append(itemLi);
+sButton.onclick = function () {
+    myDiv.innerText = String(parseInt(myDiv.innerText)-1);
 }
 
-addButton.onclick = async function() {
-  await send("addItem", itemInput.value, parseInt(amountInput.value));
-  location.reload();
-};
+
+aButton.onclick = function () {
+    myDiv.innerText = String(parseInt(myDiv.innerText)+1);
+}
