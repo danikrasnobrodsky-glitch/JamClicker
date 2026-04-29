@@ -15,8 +15,21 @@
   align-items: center;
 }
 
-.Div{
-  width: 49px;
-    height: 55px;
-    margin: -2px;
+#Div{
+  padding-left: 200px;
 }
+
+.img{
+    width: 625px;
+    height: 650px;
+    padding-left: 600px;
+}
+
+#SignUp{
+  width: 100px;
+  height: 20px;
+}
+
+
+
+

@@ -1,13 +1,4 @@
-var sButton = document.querySelector<HTMLInputElement>("#subB")!;
-var aButton = document.querySelector<HTMLButtonElement>("#addB")!;
-var myDiv = document.querySelector<HTMLDivElement>("#Div")!;
+var signUp = get("button", "SignUp");
+var login = get("button", "Login");
 
 
-sButton.onclick = function () {
-    myDiv.innerText = String(parseInt(myDiv.innerText)-1);
-}
-
-
-aButton.onclick = function () {
-    myDiv.innerText = String(parseInt(myDiv.innerText)+1);
-}
