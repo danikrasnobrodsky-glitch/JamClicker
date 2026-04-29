@@ -17,19 +17,7 @@ body{
   justify-content: center;
   align-items: center;
 }
-#containerDiv2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
-#containerDiv3 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
 #titleImg{
     width: 250px;
@@ -39,33 +27,15 @@ body{
 }
 
 #Jamson {
-  width: 190px;
-  height: 134px;
-  margin-top: -390px;
-  margin-left: -642px;
-  transform: rotate(2deg);
-  opacity: 0.8;
+  width: 280px;
+  height: 210px;
+  margin-top: -295px;
+  margin-left: 497px;
+  opacity: 0.9;
+  pointer-events: none;
+
+
 }
-
-#Jamson1 {
-  width: 190px;
-  height: 134px;
-  margin-top: -390px;
-  margin-left: 50px;
-  transform: rotate(-20deg);
-  opacity: 0.8;
-}
-
-#Jamson2 {
-  width: 190px;
-  height: 134px;
-  margin-top: -200px;
-  margin-left: -420px;
-  transform: rotate(10deg);
-  opacity: 0.8;
-}
-
-
 
 
 #Play{
@@ -73,7 +43,7 @@ body{
   border:#b11616 3px solid;
   border-radius: 19px;
   font-size: 20;
-  margin-left: 78px;
+  margin-left: 45px;
   margin-top: 10px;
 
 
@@ -86,15 +56,15 @@ body{
   border:#b11616 3px solid;
   border-radius: 13px;
   font-size: 14;
-  margin-left: 78px;
+  margin-left: 44px;
 }
 
 hr1 {
   border: none;
   height: 3px;
   background-color: #333; 
-  width: 30`0px;   
-  margin-top: -40px;        
+  width: 220px;   
+  margin-top: -43px;        
 }
 
  
@@ -103,15 +73,61 @@ hr1 {
     background-color: rgb(235, 213, 213);
     width: 300px;
     height: 400px;
-    margin-left: -600px;
+    margin-left: -560px;
     margin-top: -210px;
 }
 
 .Second{
     display: inline-block;
     background-color: #333;
-    width: 10px;
+    width: 7px;
     height: 420px;
-    margin-left: -300px;
+    margin-left: -260px;
     margin-top: -400px;
 }
+
+.Third{
+    display: inline-block;
+    background-color: rgb(235, 213, 213);
+    width: 300px;
+    height: 400px;
+    margin-left: 560px;
+    margin-top: -430px;
+}
+
+.Forth{
+    display: inline-block;
+    background-color: #333;
+    width: 7px;
+    height: 420px;
+    margin-left: 260px;
+    margin-top: -400px;
+}
+
+.Fifth{
+    display: inline-block;
+    background-color: rgba(243, 150, 146, 0.801);
+    width: 51px;
+    height: 417px;
+    margin-left: 318px;
+    margin-top: -410px;
+}
+
+.Sixth{
+    display: inline-block;
+    background-color: rgba(243, 150, 146, 0.801);
+    width: 51px;
+    height: 420px;
+    margin-left: 520px;
+    margin-top: -430px;
+}
+
+.Seventh{
+    display: inline-block;
+    background-color: rgba(243, 150, 146, 0.801);
+    width: 51px;
+    height: 420px;
+    margin-left: 718px;
+    margin-top: -440px;
+}
+
