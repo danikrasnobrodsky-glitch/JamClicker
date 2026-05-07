@@ -50,23 +50,30 @@ body {
   align-items: center;
 }
 
+#Div{
+  position: absolute;
+  pointer-events: none;
+  margin-top: 69px;
+    color: rgb(38, 38, 41);
+}
 
 #titleImg {
   width: 250px;
   height: 268px;
   margin-top: -35px;
   pointer-events: none;
+  
 }
 
 .SettingsImg {
   width: 68px;
   height: 68px;
-  pointer-events: none;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease-in-out;
 }
 
 .SettingsImg:hover {
-  transform: rotate(50deg);
+ 
+  transform: rotate(60deg);
 }
 
 #Jamson {

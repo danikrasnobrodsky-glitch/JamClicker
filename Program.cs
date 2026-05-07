@@ -49,12 +49,14 @@ class Program
 
 class Database() : DatabaseCore("database")
 {
-  public DbSet<Item> Items { get; set; } = default!;
+  public DbSet<User> Users { get; set; } = default!;
 }
 
-class Item(string name, double amount)
+class User(string username, string password, string usertoken)
 {
-  public int Id { get; set; } = default!;
-  public string Name { get; set; } = name;
-  public double Amount { get; set; } = amount;
+  public int Id {get; set;} = default!;
+  public string UserName {get; set;} = username;
+  [JsonIgnore] public string PassWord {get; set;}  = password;
+  [JsonIgnore] public string UserToken {get; set;} =  usertoken;
+
 }
