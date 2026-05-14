@@ -1,6 +1,7 @@
 body {
     background-color: deepskyblue;
     background: linear-gradient(to right, #df8181, #e9a6cb, #df8181, #e9a6cb, #df8181);
+    user-select: none;
 }
 
 
@@ -9,6 +10,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  animation: orbit 6s linear infinite;
 }
 
 #containerDiv1 {
@@ -26,14 +28,37 @@ body {
   cursor: pointer;
   color: rgb(255, 255, 255);
   transition: transform 0.15s;
+  animation: smallTilt 6s ease-in-out infinite;
+  -webkit-user-drag: none; 
+}
 
-  
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translateX(6px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(6px) rotate(-360deg);
+  }
+}
+
+@keyframes smallTilt {
+  0% {
+    transform: rotate(-2deg);
+  }
+
+  50% {
+    transform: rotate(2deg);
+  }
+
+  100% {
+    transform: rotate(-2deg);
+  }
 }
 
 .BigJam:hover {
-  transform: scale(1.05);
-  filter: brightness(1.05);
+  filter: brightness(1.04);
 }
+
 
 #Click {
 
@@ -61,3 +86,4 @@ body {
     border-radius: 15px;
     box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3);
 }
+

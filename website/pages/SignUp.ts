@@ -3,35 +3,50 @@ import { get } from "componentUtilities";
 
 var UserNameInput = document.querySelector<HTMLInputElement>("#UserName")!;
 var PasswordInput = document.querySelector<HTMLInputElement>("#PassWord")!;
-var ConfirmInput = document.querySelector<HTMLInputElement>("#ConfirmPassWord")!;
 var CreateAccountButton = document.querySelector<HTMLButtonElement>("#Button1")!;
-var ErrorDiv = document.querySelector<HTMLDivElement>("#ErrorDiv")!;
-
-
-CreateAccountButton.onclick = async function() {
-  await send("addLoginDetail", UserNameInput.value, PasswordInput.value);
-};
-
-
-
-
-
-
-
+var ConfirmPasswordInput = document.querySelector<HTMLInputElement>("#ConfirmPassWord")!;
+var ErrorDiv = document.querySelector<HTMLElement>("#ErrorDiv")!;
 
 CreateAccountButton.onclick = async function () {
-  if (PasswordInput.value != ConfirmInput.value) {
+  var username = UserNameInput.value;
+  var password = PasswordInput.value;
+  var confirmPassword = ConfirmPasswordInput.value;
+  
+
+
+
+  if (username.length <= 3) {
+    ErrorDiv.innerText = "Username is too short.";
+    return;
+  }
+
+  if (username.length >= 12) {
+    ErrorDiv.innerText = "Username is too long.";
+    return;
+  }
+
+  if (password != confirmPassword) {
     ErrorDiv.innerText = "Passwords do not match.";
     return;
   }
 
-  var userToken = await send<string | null>("signUp", UserNameInput.value, PasswordInput.value);
+  var userToken = await send<string | null>("Signup", username, password);
 
   if (userToken == null) {
     ErrorDiv.innerText = "A user with that username already exists.";
     return;
   }
 
+  ErrorDiv.innerText = "";
+
   localStorage.setItem("userToken", userToken);
-  location.href = "chat.html";
+
+  window.location.href = 'Game.html';
 };
+
+
+
+
+
+
+
