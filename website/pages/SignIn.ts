@@ -5,6 +5,21 @@ var PasswordInput = document.querySelector<HTMLInputElement>("#PassWord")!;
 var LoginSubmitButton = document.querySelector<HTMLButtonElement>("#Button1")!;
 var ErrorMessage = document.querySelector<HTMLParagraphElement>("#ErrorMessage")!;
 
+var errorTimeout: number | null = null;
+
+
+function triggerErrorTimer(durationMs: number = 3000) {
+  if (errorTimeout) {
+    clearTimeout(errorTimeout);
+  }
+
+  errorTimeout = window.setTimeout(() => {
+    ErrorMessage.style.display = "none";
+    ErrorMessage.innerText = "";
+    errorTimeout = null;
+  }, durationMs);
+}
+
 LoginSubmitButton.onclick = async function() {
   var username = UsernameInput.value;
   var password = PasswordInput.value;
@@ -12,12 +27,15 @@ LoginSubmitButton.onclick = async function() {
   var userToken = await send<string | null>("Login", username, password);
 
   if (userToken != null) {
-    ErrorMessage.style.visibility = "hidden";
+    if (errorTimeout) clearTimeout(errorTimeout);
+    ErrorMessage.style.display = "none";
+    ErrorMessage.innerText = "";
+    
     localStorage.setItem("userToken", userToken);
-
     location.href = "/website/pages/Game.html";
   } else {
     ErrorMessage.innerText = "Username or password is incorrect";
-    ErrorMessage.style.visibility = "visible";
+    ErrorMessage.style.display = "block"; 
+    triggerErrorTimer();
   }
 };

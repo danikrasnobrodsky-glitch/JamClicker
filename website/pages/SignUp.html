@@ -5,7 +5,7 @@
 
 <head>
   <title>Jam clicker</title>
-  <link rel="stylesheet" href="SignUp.css" />
+  <link rel="stylesheet" href="SignUp.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -15,15 +15,36 @@
   <div id="containerDiv">
     <div class="block"></div>
     <div id="Si"><strong>Sign Up</strong></div>
-    <input type="UN" id="UserName" placeholder="Username:">
-    <input type="PW" id="PassWord" placeholder="Password:">
-    <input type="CPW" id="ConfirmPassWord" placeholder="Re-type Password:">
+    <input type="text" id="UserName" placeholder="Username:">
+    <input type="password" id="PassWord" placeholder="Password:">
+    <input type="password" id="ConfirmPassWord" placeholder="Re-type Password:">
     <div id="ErrorDiv"></div>
 
-    <button type="button" id="Button1">Sign In</button>   
+    <div class="box1">
+      <img id="User" src="../images/user.png">
+    </div>
+
+    <div class="box2">
+      <img id="User" src="../images/password.png">
+    </div>
+
+    <div class="box3">
+      <img id="User" src="../images/password.png">
+    </div>
+
+    <div class="box4"></div>
+    <div class="box5"></div>
+    <div class="box6"></div>
+  
   </div>
-
-
+  <div id="containerDiv1">
+     <button type="button" id="Button1">Sign Up</button> 
+     <div id="exist">Already have an existing account?</div>
+     <a id="Link" href="SignIn.html">
+      Login now
+     </a>
+  </div>
+ 
 
 </body>
 

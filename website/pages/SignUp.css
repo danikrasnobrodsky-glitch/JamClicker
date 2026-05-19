@@ -10,10 +10,17 @@ body {
   align-items: center;
 }
 
+#containerDiv1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .block {
     background-color: rgb(238, 238, 238);
     width: 600px;
-    height: 450px;
+    height: 500px;
     margin-top: 225px;
     border-radius: 15px;
     box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3);
@@ -23,35 +30,195 @@ body {
     font-family: Arial;
     font-weight: bold;
     font-size: 50px;
-    margin-top: -425px;
+    margin-top: -475px;
+    letter-spacing: -0.5px;
 }
 
 #UserName {
-    background-color: rgb(238, 238, 238);
-    font-size: 25px;
-    height: 45px;
-    margin-top: 32px;
-    border-radius: 5px;
+    margin-top: 28px;
+    width: 350px;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+    border: 2px solid #a7a7a7;
+    font-size: 17px;
+    padding: 15px 59px;
+
+    border-radius: 12px;
+    color: #495057;
+    transition: all 0.3s ease;
+    outline: none;
 }
 
 #PassWord {
-    background-color: rgb(238, 238, 238);
-    font-size: 25px;
-    height: 45px;
     margin-top: 20px;
-    border-radius: 5px;
+    width: 350px;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+    border: 2px solid #a7a7a7;
+    font-size: 17px;
+    padding: 15px 59px;
+
+    border-radius: 12px;
+    color: #495057;
+    transition: all 0.3s ease;
+    outline: none;
 }
 #ConfirmPassWord {
-    background-color: rgb(238, 238, 238);
-    font-size: 25px;
-    height: 45px;
     margin-top: 20px;
-    border-radius: 5px;
+    width: 350px;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+    border: 2px solid #a7a7a7;
+    font-size: 17px;
+    padding: 15px 59px;
+
+    border-radius: 12px;
+    color: #495057;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.box1 {
+    top: 358.3px;
+    left: 41%;
+    position: absolute;
+    width: 50px;
+    height: 49.9px;
+    overflow: hidden;
+    background-color: #f0efa800;
+    border-radius: 9px 0 0 9px;
+}
+
+.box1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+}
+
+.box2 {
+    top: 432.2px;
+    left: 41%;
+    position: absolute;
+    width: 50px;
+    height: 49.9px;
+    overflow: hidden;
+    background-color: #f0efa800;
+    border-radius: 9px 0 0 9px;
+}
+
+.box2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+}
+
+.box3 {
+    top: 506px;
+    left: 41%;
+    position: absolute;
+    width: 50px;
+    height: 49.9px;
+    overflow: hidden;
+    background-color: #f0efa800;
+    border-radius: 9px 0 0 9px;
+}
+
+.box3 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+}
+
+.box4 {
+    top: 358.3px;
+    left: 43.6%;
+    position: absolute;
+    width: 2px;
+    height: 49.9px;
+    overflow: hidden;
+    background-color: #a7a7a7;
+}
+
+.box5 {
+    top: 432.2px;
+    left: 43.6%;
+    position: absolute;
+    width: 2px;
+    height: 49.9px;
+    overflow: hidden;
+    background-color: #a7a7a7;
+}
+
+.box6 {
+    top: 506px;
+    left: 43.6%;
+    position: absolute;
+    width: 2px;
+    height: 49.9px;
+    overflow: hidden;
+    background-color: #a7a7a7;
+}
+
+#ErrorDiv {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18.4px;
+  position: absolute;
+  color: #e72727;
+  letter-spacing: 0.05px;
+  font-weight: bold;
+  margin-top: 584px;
 }
 
 #Button1 {
-    margin-top: 45px;
-    font-size: 38px;
-    border-radius: 9px;
+    margin-top: 36px;
+    font-size: 24px;
+    width: 160px;
+    height: 52px;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0px 34px;
+    color: #363636;
+    border: 3px solid #a7a7a7; 
+
+    background: linear-gradient(135deg, #fa48eb, #d18dcb, #fa48eb);
+    background-size: 200% auto;
+    background-position: left center;
+    
+
+    
+    border-radius: 25px;
     cursor: pointer;
+
+    transition: background-position 0.9s ease, transform 0.1s ease;
 }
+
+#Button1:hover {
+    background-position: right center;
+}
+
+#Button1:active {
+    transform: translateY(1.5px);
+}
+
+#exist{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 12px;
+    font-size: 20px;
+    color: #636363;
+}
+
+#Link{
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 4px;
+    font-size: 20px;
+    color: #4464aa;
+}
+
+#Link:hover {
+    color: #648ce4;
+}
+
