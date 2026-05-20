@@ -1,41 +1,40 @@
 body {
-    background-color: deepskyblue;
-    background: linear-gradient(to right, #df8181, #e9a6cb, #df8181, #e9a6cb, #df8181);
-    user-select: none;
+  background-color: deepskyblue;
+  background: linear-gradient(to right, #df8181, #e9a6cb, #df8181, #e9a6cb, #df8181);
+  user-select: none;
 }
 
-
-#containerDiv {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  animation: orbit 6s linear infinite;
+#jamDiv {
+  width: 500px;
+  height: 500px;
+  transform: translate(0, 0); 
+  
 }
 
-#containerDiv1 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+#jamMiddleDiv {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-
-.BigJam {
-  width: 600px;
-  height: 950px;
-  border: none;
+#jamImg {
+  width: 390px;
+  height: 460px;  
+  animation: orbit 6s linear infinite, smallTilt 6s ease-in-out infinite;
+  user-select: none;
   cursor: pointer;
-  color: rgb(255, 255, 255);
-  transition: transform 0.15s;
-  animation: smallTilt 6s ease-in-out infinite;
-  -webkit-user-drag: none; 
+}
+
+#jamImg:hover {
+  filter: brightness(1.04);
 }
 
 @keyframes orbit {
   from {
     transform: rotate(0deg) translateX(6px) rotate(0deg);
   }
+
   to {
     transform: rotate(360deg) translateX(6px) rotate(-360deg);
   }
@@ -55,35 +54,34 @@ body {
   }
 }
 
-.BigJam:hover {
-  filter: brightness(1.04);
+
+
+#containerDiv {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  transform: translate(0, 50%); 
+
 }
 
-
-#Click {
-
-  border: none;
-  background: transparent;
-  display: inline-block;
-  cursor: pointer;
+#itemsDiv {
+  background: white;
+  border-radius: 20px;
+  width: 300px;
+  height: 500px;
 }
 
-#Click:hover {
-  opacity: 0.8;
+#shopDiv {
+  background: white;
+  border-radius: 20px;
+  width: 300px;
+  height: 500px;
 }
 
-#Click:active {
-  transform: translateY(7px);
-  transition: transform 0.03s;
-}
-
-.block {
-    background-color: rgb(238, 238, 238);
-    width: 350px;
-    height: 450px;
-    margin-top: -900px;
-    margin-left: 900px;
-    border-radius: 15px;
-    box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3);
+#points {
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: -25%;
 }
 

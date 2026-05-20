@@ -123,6 +123,7 @@ body {
     height: 100%;
     object-fit: cover;
     mix-blend-mode: multiply;
+    pointer-events: none;
 }
 
 .box2 {
@@ -141,6 +142,7 @@ body {
     height: 100%;
     object-fit: cover;
     mix-blend-mode: multiply;
+    pointer-events: none;
 }
 
 .box3 {
