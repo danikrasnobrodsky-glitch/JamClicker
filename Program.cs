@@ -68,7 +68,7 @@ class Database() : DatabaseCore("database")
   public DbSet<User> Users { get; set; } = default!;
 
 
-  public DbSet<Score> Scores { get; set; } = default!;
+  // public DbSet<Score> Scores { get; set; } = default!;
 }
 
 class User(string username, string password, string userToken)
@@ -82,10 +82,10 @@ class User(string username, string password, string userToken)
   [JsonIgnore] public string UserToken { get; set; } = userToken;
 }
 
-class Score(int points)
-{
-  public User Username {get; set;} = default!;
+// class Score(int points)
+// {
+//   public User Username {get; set;} = default!;
 
-  public int Points {get; set;} = points;
+//   public int Points {get; set;} = points;
 
-}
+// }

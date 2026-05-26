@@ -15,14 +15,32 @@
 
   <div id="points">Score: 0</div>
   <div id="containerDiv">
+    <div class="donut"></div>
+    <div class="donut2"></div>
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <div class="right"></div>
+    <div class="left"></div>
+    <div class="poll1"></div>
+    <div class="poll2"></div>
+    
+
+
+
     <div id="itemsDiv"></div>
     <div id="jamDiv">
       <div id="jamMiddleDiv">
-        <img id="jamImg" draggable="false" src="../images/BigJam.png">
+        <div class="orbit-wrapper">
+          <img id="jamImg" draggable="false" src="../images/BigJam.png">
+        </div>
       </div>
     </div>
     <div id="shopDiv"></div>
+
+    <img id="jamstand" draggable="false" src="../images/JamStand.png">
   </div>
+
+  <audio id="click-sound" src="../sounds/click.wav" preload="auto"></audio>
 
   <script type="module" src="Game.js"></script>
 </body>
