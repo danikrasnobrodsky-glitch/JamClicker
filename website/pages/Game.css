@@ -87,13 +87,35 @@ body {
   100% { transform: rotate(-3deg) scale(var(--img-scale)); }
 }
 
-#itemsDiv, #shopDiv {
+#shopDiv {
+  position: absolute;
   background: #cecece;
   border-radius: 20px;
   z-index: 2;
   width: 500px;
-  height: 600px;
-  margin: 0 190px;
+  max-width: 100%;
+  height: 650px;
+  margin-left: 1350px;
+
+  background-image: radial-gradient(gray 3px, transparent 3px), radial-gradient(gray 3px, transparent 3px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+
+}
+
+#itemsDiv {
+  position: absolute;
+  background: #cecece;
+  border-radius: 20px;
+  z-index: 2;
+  width: 500px;
+  max-width: 100%;
+  height: 650px;
+  margin-right: 1350px;
+
+  background-image: radial-gradient(gray 3px, transparent 3px), radial-gradient(gray 3px, transparent 3px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
 }
 
 
@@ -104,7 +126,15 @@ body {
   z-index: 4;
   margin-left: 1340px;
   margin-top: 100px;
+}
 
+#toolstand {
+  position: absolute;
+  width: 490px;
+  height: 490px;
+  z-index: 4;
+  margin-left: -1356px;
+  margin-top: 121px;
 }
 
 .donut {
@@ -115,6 +145,8 @@ body {
   border-radius: 50%;
   background: transparent;
   pointer-events: none;
+
+  
 }
 
 .donut2 {
@@ -126,6 +158,8 @@ body {
   border-radius: 50%;
   background: transparent;
   pointer-events: none;
+  
+  
 }
 
 .top {
@@ -167,6 +201,12 @@ body {
   height: 1500px;
   background-color: #cecece;
   margin-right: 750px;
+
+  background-color: #ffffff;
+  opacity: 0.8;
+  background-image:  repeating-linear-gradient(45deg, #505052 25%, transparent 25%, transparent 75%, #505052 75%, #505052), repeating-linear-gradient(45deg, #505052 25%, #ffffff 25%, #ffffff 75%, #505052 75%, #505052);
+  background-position: 0 0, 20px 20px;
+  background-size: 40px 40px;
 }
 
 .poll2 {
@@ -175,13 +215,18 @@ body {
   height: 1500px;
   background-color: #cecece;
   margin-left: 750px;
+
+  background-color: #ffffff;
+  opacity: 0.8;
+  background-image:  repeating-linear-gradient(45deg, #505052 25%, transparent 25%, transparent 75%, #505052 75%, #505052), repeating-linear-gradient(45deg, #505052 25%, #ffffff 25%, #ffffff 75%, #505052 75%, #505052);
+  background-position: 0 0, 20px 20px;
+  background-size: 40px 40px;
 }
 
 #Shop {
-
   position: absolute;
   z-index: 5;
-  top: 140px;
+  margin-top: -490px;
   right: 161px;
   width: 240px;
   height: 90px;
@@ -207,4 +252,36 @@ body {
   box-shadow: 0 2px 0px #cc7a00, 0 5px 10px rgba(0, 0, 0, 0.4);
   transform: translateY(6px) scale(1.02);
 }
+
+
+#Upgrades {
+  position: absolute;
+  z-index: 5;
+  margin-top: -490px;
+  left: 161px;
+  width: 240px;
+  height: 90px;
+  
+  background: linear-gradient(135deg, #f18dd3, #e66dc1);
+  color: #ffffff;
+  font-family: 'Arial Black', Impact, sans-serif;
+  font-size: 24px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0px #000000;
+  border: 4px solid #ffffff;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+#Upgrades:hover {
+  background: linear-gradient(135deg, #f18dd3, #e66dc1);
+  transform: scale(1.05);
+}
+
+#Upgrades:active {
+  box-shadow: 0 2px 0px #cc7a00, 0 5px 10px rgba(0, 0, 0, 0.4);
+  transform: translateY(6px) scale(1.02);
+}
+
 
