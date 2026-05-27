@@ -19,7 +19,7 @@ class Program
     Console.WriteLine($"Local:   http://localhost:{port}/website/pages/FirstPage.html");
     Console.WriteLine($"Network: http://{Network.GetLocalNetworkIPAddress()}:{port}/website/pages/FirstPage.html");
 
-while (true)
+    while (true)
     {
       var request = server.WaitForRequest();
 
@@ -35,6 +35,7 @@ while (true)
 
           request.Respond(user?.UserToken);
         }
+
         else if (request.Name == "Signup")
         {
           var (username, password) = request.GetParams<(string, string)>();
@@ -53,6 +54,23 @@ while (true)
 
           request.Respond(token);
         }
+
+        else if (request.Name == "addScore")
+        {
+          var (token, score) = request.GetParams<(string, int)>();
+          var user = database.Users.FirstOrDefault(u => u.UserToken == token);
+
+          if (user != null)
+          {
+            user.Score += score;
+            database.SaveChanges();
+          }
+          else
+          {
+            request.SetStatusCode(400);
+          }
+
+        }
       }
       catch (Exception exception)
       {
@@ -68,7 +86,7 @@ class Database() : DatabaseCore("database")
   public DbSet<User> Users { get; set; } = default!;
 
 
-  // public DbSet<Score> Scores { get; set; } = default!;
+  public DbSet<Score> Scores { get; set; } = default!;
 }
 
 class User(string username, string password, string userToken)
@@ -80,12 +98,15 @@ class User(string username, string password, string userToken)
   [JsonIgnore] public string Password { get; set; } = password;
 
   [JsonIgnore] public string UserToken { get; set; } = userToken;
+
+  public int Score { get; set; } = 0;
 }
 
-// class Score(int points)
-// {
-//   public User Username {get; set;} = default!;
+class Score(int points, int userId)
+{
+  public int Id { get; set; } = default!;
+  public int Points { get; set; } = points;
 
-//   public int Points {get; set;} = points;
-
-// }
+  public int UserId { get; set; } = userId;
+  public User User { get; set; } = default!;
+}

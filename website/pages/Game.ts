@@ -1,22 +1,25 @@
+import { send } from "clientUtilities";
 import { get } from "componentUtilities";
 
 var BigJam = get("div", "jamDiv");
 var points = get("div", "points");
-var sound = get("audio", "click-sound") as HTMLAudioElement; // Fixed tag and typecast
+var sound = get("audio", "click-sound");
 
 var score = 0;
+var token = localStorage.getItem("userToken");
 
 BigJam.addEventListener('click', () => {
-    // Reset audio to the beginning
-    sound.currentTime = 0;
-    // Play the sound
-    sound.play();
+    sound.currentTime = 0; 
+    sound.play(); 
+
+    score++;
+    points.innerText = "Jams: " + score;
 });
 
 
-BigJam.onclick = function () {
-    score++;
-    points.innerText = "Score: " + score;
+async function UpdateScore(add: number) {
+    
+    score += add;
+    points.innerText = "Jams: " + score;
+    send("addScore", token, add);
 }
-
-
