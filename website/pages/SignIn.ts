@@ -20,22 +20,25 @@ function triggerErrorTimer(durationMs: number = 3000) {
   }, durationMs);
 }
 
-LoginSubmitButton.onclick = async function() {
+LoginSubmitButton.onclick = async function () {
   var username = UsernameInput.value;
   var password = PasswordInput.value;
 
   var userToken = await send<string | null>("Login", username, password);
 
+
   if (userToken != null) {
+    console.log("hello");
     if (errorTimeout) clearTimeout(errorTimeout);
     ErrorMessage.style.display = "none";
     ErrorMessage.innerText = "";
-    
+
+    console.log("hello");
     localStorage.setItem("userToken", userToken);
     location.href = "/website/pages/Game.html";
   } else {
     ErrorMessage.innerText = "Username or password is incorrect";
-    ErrorMessage.style.display = "block"; 
+    ErrorMessage.style.display = "block";
     triggerErrorTimer();
   }
 };

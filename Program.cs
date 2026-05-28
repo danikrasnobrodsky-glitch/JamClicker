@@ -71,6 +71,21 @@ class Program
           }
 
         }
+        else if (request.Name == "getScore")
+        {
+          var token = request.GetParams<string?>();
+          var userScore = database.Users.FirstOrDefault(s => s.UserToken == token)?.Score;
+
+          if (userScore == null)
+          {
+            request.Respond<int?>(null);
+          }
+          else
+          {
+            request.Respond(userScore);
+          }
+
+        }
       }
       catch (Exception exception)
       {
@@ -85,8 +100,6 @@ class Database() : DatabaseCore("database")
 {
   public DbSet<User> Users { get; set; } = default!;
 
-
-  public DbSet<Score> Scores { get; set; } = default!;
 }
 
 class User(string username, string password, string userToken)
