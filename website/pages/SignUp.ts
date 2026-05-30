@@ -6,6 +6,12 @@ var PasswordInput = document.querySelector<HTMLInputElement>("#PassWord")!;
 var CreateAccountButton = document.querySelector<HTMLButtonElement>("#Button1")!;
 var ConfirmPasswordInput = document.querySelector<HTMLInputElement>("#ConfirmPassWord")!;
 var ErrorDiv = document.querySelector<HTMLElement>("#ErrorDiv")!;
+const toggleBtn = document.getElementById("togglePassword") as HTMLButtonElement;
+const toggleBtn2 = document.getElementById("togglePassword2") as HTMLButtonElement;
+
+toggleBtn.addEventListener("click", togglePasswords);
+toggleBtn2.addEventListener("click", togglePasswords);
+
 
 var errorTimeout: number | null = null;
 
@@ -63,6 +69,26 @@ CreateAccountButton.onclick = async function () {
   localStorage.setItem("userToken", userToken);
   window.location.href = 'Game.html';
 };
+
+
+function togglePasswords() {
+    if (PasswordInput.type == "password" || ConfirmPasswordInput.type == "password")
+    {
+      PasswordInput.type = "text";
+      ConfirmPasswordInput.type = "text";
+      toggleBtn.textContent = "ㅤ";
+      toggleBtn2.textContent = "ㅤ";
+    }
+    else
+    {
+      PasswordInput.type = "password";
+      ConfirmPasswordInput.type = "password";
+      toggleBtn.textContent = "╱";
+      toggleBtn2.textContent = "╱";
+    }
+}
+
+
 
 
 

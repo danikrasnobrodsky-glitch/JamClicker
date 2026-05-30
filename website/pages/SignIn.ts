@@ -4,6 +4,7 @@ var UsernameInput = document.querySelector<HTMLInputElement>("#UserName")!;
 var PasswordInput = document.querySelector<HTMLInputElement>("#PassWord")!;
 var LoginSubmitButton = document.querySelector<HTMLButtonElement>("#Button1")!;
 var ErrorMessage = document.querySelector<HTMLParagraphElement>("#ErrorMessage")!;
+const toggleBtn = document.getElementById("togglePassword") as HTMLButtonElement;
 
 var errorTimeout: number | null = null;
 
@@ -42,3 +43,13 @@ LoginSubmitButton.onclick = async function () {
     triggerErrorTimer();
   }
 };
+
+toggleBtn.addEventListener("click", () => {
+    if (PasswordInput.type == "password") {
+        PasswordInput.type = "text";
+        toggleBtn.textContent = "ㅤ";
+    } else {
+        PasswordInput.type = "password";
+        toggleBtn.textContent = "╱";
+    }
+});

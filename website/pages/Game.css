@@ -16,12 +16,12 @@ body {
 
 #points {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  position: absolute;
   z-index: 11;
-  width: 100%;
+  font-size: 2vw;
   text-align: center;
-  font-size: 30px;
   color: white;
-  margin-top: 20px;
+  top: 20px;
 }
 
 #containerDiv {
