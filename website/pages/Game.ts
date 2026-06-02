@@ -4,6 +4,7 @@ import { get } from "componentUtilities";
 var BigJam = get("div", "jamDiv");
 var points = get("div", "points");
 var sound = get("audio", "click-sound");
+var Shop = get("button", "Shop");
 
 let score: number = 0;
 
@@ -40,3 +41,12 @@ if (lastLoginScore == null) {
 
 score = lastLoginScore;
 points.innerText = "Jams: " + score;
+
+
+
+
+
+
+Shop.onclick = function() {
+    window.location.href = 'Store.html';
+};
