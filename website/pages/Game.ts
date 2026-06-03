@@ -24,9 +24,7 @@ async function updateScore(add: number) {
     }
 
     score += add;
-
     points.innerText = "Jams: " + score;
-
     await send("addScore", token, add);
 }
 
