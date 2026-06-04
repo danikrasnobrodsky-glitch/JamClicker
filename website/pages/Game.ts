@@ -42,9 +42,6 @@ points.innerText = "Jams: " + score;
 
 
 
-
-
-
 Shop.onclick = function() {
     window.location.href = 'Store.html';
 };

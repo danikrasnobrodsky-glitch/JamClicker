@@ -86,6 +86,29 @@ class Program
           }
 
         }
+        else if (request.Name == "addCursorItem")
+        {
+          var (token, cursor) = request.GetParams<(string, int)>();
+          var user = database.Users.FirstOrDefault(u => u.UserToken == token);
+
+          if (user != null)
+          {
+            user.Cursor += cursor;
+            database.SaveChanges();
+          }
+          else
+          {
+            request.SetStatusCode(400);
+          }
+
+        }
+        else if (request.Name == "getCursorItem")
+        {
+          var token = request.GetParams<string>();
+          var userCurser = database.Users.FirstOrDefault(s => s.UserToken == token)!.Cursor; 
+          request.Respond(userCurser);
+
+        }
       }
       catch (Exception exception)
       {
@@ -113,13 +136,21 @@ class User(string username, string password, string userToken)
   [JsonIgnore] public string UserToken { get; set; } = userToken;
 
   public int Score { get; set; } = 0;
+  public int Cursor { get; set; } = 0;
 }
 
 class Score(int points, int userId)
 {
   public int Id { get; set; } = default!;
   public int Points { get; set; } = points;
+  public int UserId { get; set; } = userId;
+  public User User { get; set; } = default!;
+}
 
+class CursorItem(int cursors, int userId)
+{
+  public int Id { get; set; } = default!;
+  public int Cursors { get; set; } = cursors;
   public int UserId { get; set; } = userId;
   public User User { get; set; } = default!;
 }
