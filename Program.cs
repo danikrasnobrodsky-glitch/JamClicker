@@ -73,19 +73,20 @@ class Program
         }
         else if (request.Name == "getScore")
         {
-          var token = request.GetParams<string?>();
-          var userScore = database.Users.FirstOrDefault(s => s.UserToken == token)?.Score;
+          var token = request.GetParams<string>();
+          var user = database.Users.FirstOrDefault(s => s.UserToken == token);
 
-          if (userScore == null)
+          if (user == null)
           {
-            request.Respond<int?>(null);
+            request.Respond<int?>(null); 
           }
           else
           {
-            request.Respond(userScore);
+            request.Respond<int?>(user.Score);
           }
-
         }
+
+
         else if (request.Name == "addCursorItem")
         {
           var (token, cursor) = request.GetParams<(string, int)>();
@@ -109,6 +110,26 @@ class Program
           request.Respond(userCurser);
 
         }
+
+        else if (request.Name == "addGrandmaItem")
+        {
+          var (token, grandma) = request.GetParams<(string, int)>();
+          var user = database.Users.FirstOrDefault(u => u.UserToken == token);
+
+          if (user != null)
+          {
+            user.Grandma += grandma;
+
+            database.SaveChanges();
+          }
+        }
+        else if (request.Name == "getGrandmaItem")
+        {
+          var token = request.GetParams<string>();
+          var userGranma = database.Users.FirstOrDefault(s => s.UserToken == token)!.Grandma; 
+          request.Respond(userGranma);
+        }
+
       }
       catch (Exception exception)
       {
@@ -137,6 +158,7 @@ class User(string username, string password, string userToken)
 
   public int Score { get; set; } = 0;
   public int Cursor { get; set; } = 0;
+  public int Grandma { get; set; } = 0;
 }
 
 class Score(int points, int userId)
@@ -151,6 +173,14 @@ class CursorItem(int cursors, int userId)
 {
   public int Id { get; set; } = default!;
   public int Cursors { get; set; } = cursors;
+  public int UserId { get; set; } = userId;
+  public User User { get; set; } = default!;
+}
+
+class GradmaItem(int grandmas, int userId)
+{
+  public int Id { get; set; } = default!;
+  public int Grandmas { get; set; } = grandmas;
   public int UserId { get; set; } = userId;
   public User User { get; set; } = default!;
 }

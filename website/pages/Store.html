@@ -1,9 +1,8 @@
-<meta charset="UTF-8">
 <!DOCTYPE html>
-
 <html>
 
 <head>
+  <meta charset="UTF-8">
   <title>Jam clicker</title>
   <link rel="stylesheet" href="Store.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -12,47 +11,72 @@
 </head>
 
 <body>
+  
+    <div id="score-container">
+      <span id="points" >0₹</span>
+    </div>
 
   <div class="containerDiv1">
     <div id="Backround1">
       <div id="Backround2">
-      <div id="cell0" class="cell">
-
-        <div id="Item1" class="cell1"></div>
-        <div id="Item2" class="cell1"></div>
-        <div id="Item3" class="cell1"></div>
-        <div id="Item4" class="cell1"></div>
-
-      </div>
-      <div id="cell1" class="cell">
-
-        <div id="Item5" class="cell1">
-          <img id="cursor" draggable="false" src="../images/cursor.png">
-          <span id="item-name">0 - Cursors</span> 
-          <button id="buy5">BUY 1</button>
+        
+        <div id="cell0" class="cell">
+          <div id="Item1" class="cell1"></div>
+          <div id="Item2" class="cell1"></div>
+          <div id="Item3" class="cell1"></div>
+          <div id="Item4" class="cell1"></div>
         </div>
+        
+        <div id="cell1" class="cell">
+          <div id="Item5" class="cell1">
+            <div id="Cavior">
+              <img id="img5" draggable="false" src="../images/cursor.png" alt="cursor">
+              <div id="item-name5">0 - Cursors</div> 
+            </div>
+            <div id="Info5">Each cursor gives you one click pre-second.</div>
+            <div id="Summery5">0 cursors producing 0 jams pre-second.</div>
+            <div id="Cover5"> 
+              <div id="Stand5"></div> 
+              <button id="buy5">BUY 1</button> 
+              <div id="Price5" >15₹</div> 
+            </div>
+          </div>
 
-        <div id="Item6" class="cell1"> <button id="Buy6">BUY 1</button></div>
-        <div id="Item7" class="cell1"> <button id="Buy7">BUY 1</button></div>
-        <div id="Item8" class="cell1"> <button id="Buy8">BUY 1</button></div>
-      </div>
+
+          <div id="Item6" class="cell1">
+            <div id="Cavior">
+              <img id="img6" draggable="false" src="../images/Grandma.png" alt="cursor">
+              <div id="item-name6">0 - Grandmas</div> 
+            </div>
+            <div id="Info6">A nice grandma to produce 2 jams pre-second. </div>
+            <div id="Summery6">0 grandmas producing 0 jams pre-second.</div>
+            <div id="Cover6"> 
+              <div id="Stand6"></div> 
+              <button id="buy6">BUY 1</button> 
+              <div id="Price6">100₹</div> 
+            </div>
+          </div>
+
+          <div id="Item7" class="cell1"> <div id="Cover7"><button id="buy7">BUY 1</button></div></div>
+          <div id="Item8" class="cell1"> <div id="Cover8"><button id="buy8">BUY 1</button></div></div>
+        </div>
 
         <div id="Pole"></div>
 
+        <button class="back-btn" id="backButton">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="back-icon" style="width: 24px; height: 24px;">
+            <path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"/>
+          </svg>
+          <span class="back-text">Back</span>
+        </button>
+
       </div>
     </div>
-
   </div>
+  <audio id="click-sound" src="../sounds/decline.wav" preload="auto"></audio>
+  <audio id="click-sound2" src="../sounds/success.wav" preload="auto"></audio>
 
-
-
-
-
-
-      <div id="points"></div>
+  <script type="module" src="Store.js"></script>
 </body>
-
-
-<script type="module" src="Store.js"></script>
 
 </html>
