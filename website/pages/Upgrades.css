@@ -26,6 +26,8 @@ body {
     flex-grow: 1;
     width: 100%;
     margin-top: 150px;
+
+    gap: 20px;
 }
 
 #Backround1 {
@@ -33,19 +35,17 @@ body {
     border-radius: 20px;
     z-index: 2;
     width: 40%;
-    height: 600px;
+    height: 750px;
     border: 7px solid #ebebeb;
-
     background-image:
         radial-gradient(circle at 50% 100%, transparent 20%, #2b2b2b 21%, #2b2b2b 34%, transparent 35%, transparent),
         radial-gradient(circle at 50% 0%, transparent 20%, #2b2b2b 21%, #2b2b2b 34%, transparent 35%, transparent);
     background-position: 0 0, -20px 0;
     background-size: 40px 30px;
-
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px;
+    padding: 20px;
     box-sizing: border-box;
 }
 
@@ -108,23 +108,28 @@ body {
     color: #ebebeb;          
     background-color: #1b1b1b;
     border: 6px solid #ebebeb; 
-    /* border-left: 6px solid #ebebeb; 
-    border-top: 6px solid #ebebeb;  */
-    
-    /* Making it a perfect square box */
     width: 600px;
     height: 100px;
-    
-    /* Center the number "0" inside the box */
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    /* Design tweaks */
     border-radius: 25px;     
-    
-
     background-image:  radial-gradient(circle at 50% 100%, transparent 20%, #2b2b2b 21%, #2b2b2b 34%, transparent 35%, transparent), radial-gradient(circle at 50% 0%, transparent 20%, #2b2b2b 21%, #2b2b2b 34%, transparent 35%, transparent);
     background-position: -5px 0, -25px 0;
     background-size: 40px 30px;
+}
+
+#Item1, #Item2, #Item3, #Item4 {
+    display: flex;       /* Makes 'gap' work if there are child elements inside */
+    position: relative;  /* Makes 'z-index' work */
+    
+    gap: 20px;
+    background: #3d3b3b;
+    border-radius: 25px;
+    z-index: 8;
+    width: 650px;
+    height: 110px;
+    border: 5px solid #ebebeb;
+    box-sizing: border-box;
+    overflow: visible;
 }

@@ -6,11 +6,11 @@ body {
 }
 #score-container {
     display: flex;
-    justify-content: center; /* Centers horizontally */
-    align-items: flex-start; /* Aligns to the top */
+    justify-content: center;
+    align-items: flex-start;
     width: 100%;
-    position: absolute;      /* Allows it to sit on top of other game elements */
-    top: 20px;               /* Space from the very top of the screen */
+    position: absolute;
+    top: 20px;
     left: 0;
     z-index: 10;
 
@@ -188,7 +188,7 @@ body {
     transform: translateY(10px)
 }
 
-#img6 {
+#img6, #img7 {
     position: absolute;
     height: 85%;
     width: auto;
@@ -199,7 +199,7 @@ body {
 }
 
 
-#item-name5, #item-name6 {
+#item-name5, #item-name6, #item-name7 {
     position: absolute;
     font-family: sans-serif;
     font-size: 1.1rem;
@@ -215,7 +215,7 @@ body {
 
 }  
 
-#Info5, #Info6 {
+#Info5, #Info6, #Info7 {
     position: absolute;
     font-size: 17px;
     font-family: sans-serif;
@@ -224,7 +224,7 @@ body {
 
 }
 
-#Summery5, #Summery6 {
+#Summery5, #Summery6, #Summery7 {
     font-size: 17px;
     font-family: sans-serif;
     margin-top: 50px;
@@ -252,7 +252,7 @@ body {
     cursor: pointer;
 }
 
-#Price5, #Price6 {
+#Price5, #Price6, #Price7 {
     z-index: 5;
     display: flex;
     justify-content: center;
@@ -262,7 +262,7 @@ body {
     height: 100%;
     width: 100%;
     user-select: none;
-    -webkit-text-stroke: 0.9px black;
+    -webkit-text-stroke: 0.9px black;  
     border-radius: 15px;
     font-size: 35px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -272,7 +272,9 @@ body {
 
 #Cover5, #Cover6, #Cover7, #Cover8 {
     z-index: 11;
-    background: #54aa62;
+    background-color: #54aa62;
+    /* background: #acacace0; */
+
     height: 100%;
     width: 18%;
     border: 5px solid #ebebeb;
@@ -282,7 +284,7 @@ body {
     transform: translateX(20px)
 }
 
-#Stand5, #Stand6 {
+#Stand5, #Stand6, #Stand7 {
     position: absolute;
     height: 100%;
     width: 6%;
@@ -356,7 +358,6 @@ body {
 }
 
 .not-enough-points {
-    z-index: 5;
-    background: #acacace0;
-
+    background-color: #838181 !important;
+    cursor: not-allowed;
 }

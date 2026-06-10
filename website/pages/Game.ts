@@ -14,6 +14,7 @@ var token = localStorage.getItem("userToken");
 // --- Times that I brought it ---
 let pointsPerSecond5: number = 0;
 let pointsPerSecond6: number = 0;
+let pointsPerSecond7: number = 0;
 
 
 BigJam.addEventListener('click', (): void => {
@@ -37,7 +38,7 @@ async function updateScore(add: number) {
     }
 
     score += add;
-    points.innerText = "Jams: " + score;
+    points.innerText = score + "₹";
     await send("addScore", token, add);
 }
 
@@ -50,12 +51,13 @@ if (lastLoginScore == null) {
 }
 
 score = lastLoginScore;
-points.innerText = "Jams: " + score;
+points.innerText = score + "₹";
 
 
 // --- Add the Items to the Game.ts---
 var lastLoginCursor = await send<number>("getCursorItem", token);
 var lastLoginGrandma = await send<number>("getGrandmaItem", token);
+var lastLoginFarm = await send<number>("getFarmItem", token);
 
 if (lastLoginCursor > 0) {
     pointsPerSecond5 = lastLoginCursor * 1; 
@@ -63,7 +65,7 @@ if (lastLoginCursor > 0) {
 
     setInterval(async () => {
         score += pointsPerSecond5;
-        points.innerText = "Jams: " + score;
+        points.innerText = score + "₹";
 
         await send("addScore", token, pointsPerSecond5);
     }, 1000);
@@ -75,9 +77,21 @@ if (lastLoginGrandma > 0) {
 
     setInterval(async () => {
         score += pointsPerSecond6;
-        points.innerText = "Jams: " + score;
+        points.innerText = score + "₹";
         
         await send("addScore", token, pointsPerSecond6);
+    }, 1000);
+}
+
+if (lastLoginFarm > 0) {
+    pointsPerSecond7 = lastLoginFarm * 1; 
+    
+
+    setInterval(async () => {
+        score += pointsPerSecond7;
+        points.innerText = score + "₹";
+        
+        await send("addScore", token, pointsPerSecond7);
     }, 1000);
 }
 

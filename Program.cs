@@ -78,7 +78,7 @@ class Program
 
           if (user == null)
           {
-            request.Respond<int?>(null); 
+            request.Respond<int?>(null);
           }
           else
           {
@@ -106,7 +106,7 @@ class Program
         else if (request.Name == "getCursorItem")
         {
           var token = request.GetParams<string>();
-          var userCurser = database.Users.FirstOrDefault(s => s.UserToken == token)!.Cursor; 
+          var userCurser = database.Users.FirstOrDefault(s => s.UserToken == token)!.Cursor;
           request.Respond(userCurser);
 
         }
@@ -126,8 +126,27 @@ class Program
         else if (request.Name == "getGrandmaItem")
         {
           var token = request.GetParams<string>();
-          var userGranma = database.Users.FirstOrDefault(s => s.UserToken == token)!.Grandma; 
+          var userGranma = database.Users.FirstOrDefault(s => s.UserToken == token)!.Grandma;
           request.Respond(userGranma);
+        }
+        
+        else if (request.Name == "addFarmItem")
+        {
+          var (token, farm) = request.GetParams<(string, int)>();
+          var user = database.Users.FirstOrDefault(u => u.UserToken == token);
+
+          if (user != null)
+          {
+            user.Farm += farm;
+
+            database.SaveChanges();
+          }
+        }
+        else if (request.Name == "getFarmItem")
+        {
+          var token = request.GetParams<string>();
+          var userFarm = database.Users.FirstOrDefault(s => s.UserToken == token)!.Farm; 
+          request.Respond(userFarm);
         }
 
       }
@@ -159,6 +178,7 @@ class User(string username, string password, string userToken)
   public int Score { get; set; } = 0;
   public int Cursor { get; set; } = 0;
   public int Grandma { get; set; } = 0;
+  public int Farm { get; set; } = 0;
 }
 
 class Score(int points, int userId)
@@ -181,6 +201,14 @@ class GradmaItem(int grandmas, int userId)
 {
   public int Id { get; set; } = default!;
   public int Grandmas { get; set; } = grandmas;
+  public int UserId { get; set; } = userId;
+  public User User { get; set; } = default!;
+}
+
+class FarmItem(int farms, int userId)
+{
+  public int Id { get; set; } = default!;
+  public int Farms { get; set; } = farms;
   public int UserId { get; set; } = userId;
   public User User { get; set; } = default!;
 }
