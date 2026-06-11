@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
   <title>Jam Clicker</title>
-
   <link rel="stylesheet" href="Game.css">
-  <link rel="icon" sec="../images/icon.png" href="favicon.ico">
-
-
+  <link rel="icon" src="../images/icon.png" href="favicon.ico">
 </head>
-
 <body>
 
-
   <div id="points">Jams: 0</div>
+  
   <div id="containerDiv">
     <div class="donut"></div>
     <div class="donut2"></div>
@@ -27,8 +21,13 @@
     <div class="poll2"></div>
 
     <div id="shopDiv"></div>
-    
     <div id="itemsDiv"></div>
+
+    <div class="badge-container">
+      <div class="award-badge">
+        <img id="trophy" draggable="false" src="../images/trophy.png">
+      </div>
+    </div>
 
     <div id="jamDiv">
       <div id="jamMiddleDiv">
@@ -36,9 +35,7 @@
           <img id="jamImg" draggable="false" src="../images/BigJam.png">
         </div>
       </div>
-    </div>
-
-
+      </div>
 
     <img id="jamstand" draggable="false" src="../images/JamStand.png">
     <button id="Shop">Store</button>
@@ -51,5 +48,4 @@
 
   <script type="module" src="Game.js"></script>
 </body>
-
 </html>

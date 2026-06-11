@@ -149,6 +149,27 @@ class Program
           request.Respond(userFarm);
         }
 
+
+        else if (request.Name == "addDoubleClick")
+        {
+          var token = request.GetParams<string>();
+          var user = database.Users.FirstOrDefault(u => u.UserToken == token);
+
+          if (user != null)
+          {
+            user.DoubleClick = true;
+
+            database.SaveChanges();
+            request.Respond(true);
+          }
+        }
+        else if (request.Name == "getDoubleClick")
+        {
+          var token = request.GetParams<string>();
+          var userDoubleClick = database.Users.FirstOrDefault(s => s.UserToken == token)!.DoubleClick;
+          request.Respond(userDoubleClick);
+        }
+
       }
       catch (Exception exception)
       {
@@ -179,6 +200,8 @@ class User(string username, string password, string userToken)
   public int Cursor { get; set; } = 0;
   public int Grandma { get; set; } = 0;
   public int Farm { get; set; } = 0;
+
+  public bool DoubleClick { get; set; } = false;
 }
 
 class Score(int points, int userId)
@@ -209,6 +232,14 @@ class FarmItem(int farms, int userId)
 {
   public int Id { get; set; } = default!;
   public int Farms { get; set; } = farms;
+  public int UserId { get; set; } = userId;
+  public User User { get; set; } = default!;
+}
+
+class DoubleClickUpgrade(bool doubleclick, int userId)
+{
+  public int Id { get; set; } = default!;
+  public bool DoubleClick { get; set; } = doubleclick;
   public int UserId { get; set; } = userId;
   public User User { get; set; } = default!;
 }

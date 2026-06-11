@@ -7,6 +7,8 @@ var sound = get("audio", "click-sound");
 var Shop = get("button", "Shop");
 var Upgrades = get("button", "Upgrades");
 
+
+
 let score: number = 0;
 var cooldownTime = 100;
 var token = localStorage.getItem("userToken");
@@ -15,6 +17,29 @@ var token = localStorage.getItem("userToken");
 let pointsPerSecond5: number = 0;
 let pointsPerSecond6: number = 0;
 let pointsPerSecond7: number = 0;
+
+
+
+BigJam.addEventListener('click', (event: MouseEvent): void => {
+    var rect = BigJam.getBoundingClientRect();
+
+    var clickX = event.clientX - rect.left;
+    var clickY = event.clientY - rect.top;
+
+    var spot = document.createElement('div') as HTMLDivElement;
+    spot.classList.add('jam-spot');
+
+    spot.style.left = `${clickX}px`;
+    spot.style.top = `${clickY}px`;
+
+
+    BigJam.appendChild(spot);
+
+
+    setTimeout(() => {
+        spot.remove();
+    }, 1200);
+});
 
 
 BigJam.addEventListener('click', (): void => {
@@ -29,6 +54,10 @@ BigJam.addEventListener('click', (): void => {
     sound.currentTime = 0;
     sound.play();
     void updateScore(1);
+
+        // 1. Create a new div element for the spot
+
+
 });
 
 async function updateScore(add: number) {
@@ -102,3 +131,6 @@ Shop.onclick = function() {
 Upgrades.onclick = function() {
     window.location.href = 'Upgrades.html';
 };
+
+
+
