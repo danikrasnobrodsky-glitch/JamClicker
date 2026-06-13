@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <div id="points">Jams: 0</div>
+  <div id="points">0₹</div>
   
   <div id="containerDiv">
     <div class="donut"></div>
@@ -26,6 +26,71 @@
     <div class="badge-container">
       <div class="award-badge">
         <img id="trophy" draggable="false" src="../images/trophy.png">
+        <button id="openBtn1"></button>
+      </div>
+    </div>
+
+    <div id="popupOverlay" class="hidden">
+      <div id="popup-box">
+        <h2>Achievements:</h2>
+        <div id="Ach1"> <img id="imge1" draggable="false" src="../images/trophy.png"></img> Reach score of 1,000</div>
+        <div id="Ach2"> <img id="imge2" draggable="false" src="../images/trophy.png"></img> Reach score of 10,000</div>
+        <div id="Ach3"> <img id="imge3" draggable="false" src="../images/trophy.png"></img> Reach score of 100,000</div>
+        <div id="Ach4"> <img id="imge4" draggable="false" src="../images/trophy.png"></img> Reach score of 1,000,000</div>
+        <button id="closeBtn1">Close</button>
+      </div>
+    </div>
+
+    <div class="profile-container">
+      <div class="user-page">
+        <img id="profile" draggable="false" src="../images/profile.png">
+        <button id="openBtn2"></button>
+      </div>
+    </div>
+
+    <div id="profileOverlay" class="hidden">
+      <div id="profilePopup">
+
+        <button id="closeProfileBtn">✕</button>
+
+        <div id="profileHeader">
+          <img id="profilePicture" src="../images/profile.png" draggable="false">
+
+          <div id="profileInfo">
+            <h3 id="profileName">Hello, Your Name</h3>
+          </div>
+        </div>
+
+        <div class="profileRow">
+            <span>Name</span>
+            <div id="usernameDisplay">Unknown Player</div>
+        </div>
+
+        <div class="profileRow">
+            <span>Password</span>
+            <div id="passwordDisplay">No password?</div>
+        </div>
+
+        <div class="profileRow">
+            <span>Location</span>
+
+            <select id="locationSelect">
+                <option value="NoCountry">------------------------</option>
+                <option value="Australia">Australia 🇦🇺</option>              
+                <option value="Canada">Canada 🇨🇦</option>
+                <option value="France">France 🇫🇷</option>
+                <option value="Germany">Germany 🇩🇪</option>
+                <option value="Israel">Israel 🇮🇱</option>
+                <option value="Japan">Japan 🇯🇵</option>
+                <option value="United Kingdom">United Kingdom 🇬🇧</option>
+                <option value="USA">USA 🇺🇸</option>
+
+
+            </select>
+        </div>
+
+        <button id="logoutBtn">Log Out</button>
+
       </div>
     </div>
 

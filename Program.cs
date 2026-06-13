@@ -36,6 +36,22 @@ class Program
           request.Respond(user?.UserToken);
         }
 
+        else if (request.Name == "getUsername")
+        {
+          var token = request.GetParams<string>();
+
+          var user = database.Users.FirstOrDefault(u => u.UserToken == token);
+
+          if (user == null)
+          {
+            request.Respond<string?>(null);
+          }
+          else
+          {
+            request.Respond(user.Username);
+          }
+        }
+
         else if (request.Name == "Signup")
         {
           var (username, password) = request.GetParams<(string, string)>();
@@ -53,6 +69,22 @@ class Program
           database.SaveChanges();
 
           request.Respond(token);
+        }
+
+        else if (request.Name == "getPassword")
+        {
+            var token = request.GetParams<string>();
+
+            var user = database.Users.FirstOrDefault(u => u.UserToken == token);
+
+            if (user == null)
+            {
+                request.Respond<string?>(null);
+            }
+            else
+            {
+                request.Respond(user.Password);
+            }
         }
 
         else if (request.Name == "addScore")

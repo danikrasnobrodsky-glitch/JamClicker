@@ -69,7 +69,6 @@ if (SummeryInfo7) { SummeryInfo7.innerText = FarmItem + " farms producing " + po
 
 
 function updatePriceColor() {
-    // Cursor (Item 5)
     if (Cover5) {
         if (score === null || score < currentPrice5) {
             Cover5.classList.add("not-enough-points");
@@ -78,7 +77,6 @@ function updatePriceColor() {
         }
     }
 
-    // Grandma (Item 6)
     if (Cover6) {
         if (score === null || score < currentPrice6) {
             Cover6.classList.add("not-enough-points");
@@ -87,7 +85,6 @@ function updatePriceColor() {
         }
     }
 
-    // Farm (Item 7)
     if (Cover7) {
         if (score === null || score < currentPrice7) {
             Cover7.classList.add("not-enough-points");
