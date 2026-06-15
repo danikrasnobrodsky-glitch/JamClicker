@@ -8,6 +8,7 @@ var ConfirmPasswordInput = document.querySelector<HTMLInputElement>("#ConfirmPas
 var ErrorDiv = document.querySelector<HTMLElement>("#ErrorDiv")!;
 const toggleBtn = document.getElementById("togglePassword") as HTMLButtonElement;
 const toggleBtn2 = document.getElementById("togglePassword2") as HTMLButtonElement;
+var backButton = get("div", "backButton");
 
 toggleBtn.addEventListener("click", togglePasswords);
 toggleBtn2.addEventListener("click", togglePasswords);
@@ -88,7 +89,11 @@ function togglePasswords() {
     }
 }
 
-
+if (backButton) {
+    backButton.onclick = function () {
+        window.location.href = 'FirstPage.html';
+    };
+}
 
 
 
