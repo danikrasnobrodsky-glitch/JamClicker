@@ -48,11 +48,12 @@ body {
 }
 
 #jamMiddleDiv {
+  width: 500px;
+  height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 500px;
-  height: 500px;
+
 }
 
 #jamDiv {

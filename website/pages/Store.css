@@ -4,6 +4,7 @@ body {
     overflow: hidden;
     margin: 0;
 }
+
 #score-container {
     display: flex;
     justify-content: center;
@@ -185,19 +186,26 @@ body {
     width: auto;
     margin-left: 15px;
     margin-right: 15px;
-    transform: translateY(10px)
+    transform: translateY(12px) translateX(-4px);
 }
 
-#img6, #img7 {
+#img6 {
     position: absolute;
     height: 85%;
     width: auto;
     margin-left: 15px;
     margin-right: 15px;
-
-    transform: translateY(8px);
+    transform: translateY(8px) translateX(-6px);
 }
 
+#img7 {
+    position: absolute;
+    height: 80%;
+    width: auto;
+    margin-left: 15px;
+    margin-right: 15px;
+    transform: translateY(9px) translateX(-8px);
+}
 
 #item-name5, #item-name6, #item-name7 {
     position: absolute;
@@ -273,8 +281,6 @@ body {
 #Cover5, #Cover6, #Cover7, #Cover8 {
     z-index: 11;
     background-color: #54aa62;
-    /* background: #acacace0; */
-
     height: 100%;
     width: 18%;
     border: 5px solid #ebebeb;
@@ -310,19 +316,11 @@ body {
     color: #ebebeb;          
     background-color: #1b1b1b;
     border: 6px solid #ebebeb; 
-    /* border-left: 6px solid #ebebeb; 
-    border-top: 6px solid #ebebeb;  */
-    
-    /* Making it a perfect square box */
     width: 600px;
     height: 100px;
-    
-    /* Center the number "0" inside the box */
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    /* Design tweaks */
     border-radius: 25px;     
     
 

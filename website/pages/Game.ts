@@ -35,6 +35,14 @@ var NameDiv = get("div", "usernameDisplay");
 var profileName = get("div", "profileName");
 var PasswordDiv = get("div", "passwordDisplay");
 
+
+let clickPower: number = 1;
+var isBuy1Unlocked = await send<boolean>("getDoubleClick", token);
+
+if (isBuy1Unlocked) {
+    clickPower = 2;
+}
+
 // --- Visual Click Spots ---
 BigJam.addEventListener('click', (event: MouseEvent): void => {
     var rect = BigJam.getBoundingClientRect();
@@ -56,6 +64,8 @@ BigJam.addEventListener('click', (event: MouseEvent): void => {
 });
 
 
+
+
 BigJam.addEventListener('click', (): void => {
     if (BigJam.classList.contains('cooldown')) return;
     BigJam.classList.add('cooldown');
@@ -67,7 +77,9 @@ BigJam.addEventListener('click', (): void => {
     sound.volume = 0.55;
     sound.currentTime = 0;
     sound.play();
-    void updateScore(1);
+    
+
+    void updateScore(clickPower); 
 });
 
 // --- Score Updates & Live Achievement Checking ---

@@ -18,17 +18,22 @@ body {
     pointer-events: none;
 }
 
+
 .containerDiv1 {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    flex-grow: 1;
-    width: 100%;
-    margin-top: 150px;
-
     gap: 20px;
+    align-items: center;
+    margin-top: 150px;
 }
+
+#cell0 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: flex-start;
+    height: auto;
+} 
 
 #Backround1 {
     background: #1b1b1b;
@@ -37,14 +42,14 @@ body {
     width: 40%;
     height: 750px;
     border: 7px solid #ebebeb;
-    background-image:
+    background-image: 
         radial-gradient(circle at 50% 100%, transparent 20%, #2b2b2b 21%, #2b2b2b 34%, transparent 35%, transparent),
         radial-gradient(circle at 50% 0%, transparent 20%, #2b2b2b 21%, #2b2b2b 34%, transparent 35%, transparent);
     background-position: 0 0, -20px 0;
     background-size: 40px 30px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     padding: 20px;
     box-sizing: border-box;
 }
@@ -120,20 +125,39 @@ body {
 }
 
 #Item1, #Item2, #Item3, #Item4 {
-    margin-top: 15px;
-    display: flex;       /* Makes 'gap' work if there are child elements inside */
-    position: relative;  /* Makes 'z-index' work */
-    
+    flex-shrink: 0;
+    margin-top: 0;
+    display: flex;
+    position: relative;
     gap: 20px;
     background: #3d3b3b;
     border-radius: 25px;
     z-index: 8;
     width: 650px;
     height: 120px;
+    max-height: 120px;
     border: 5px solid #ebebeb;
     box-sizing: border-box;
-    overflow: visible;
+    overflow: hidden;
+
+    transition:
+        opacity 0.4s ease,
+        max-height 0.4s ease,
+        margin 0.4s ease,
+        padding 0.4s ease,
+        border-width 0.4s ease;
 }
+
+.collapse-and-fade {
+    opacity: 0;
+    max-height: 0;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+    pointer-events: none;
+}
+
+
 
 #img1 {
     filter: invert(94%) sepia(93%) saturate(1352%) hue-rotate(322deg) brightness(103%) contrast(105%);
@@ -166,12 +190,14 @@ body {
 
 #Info1, #Info2, #Info3 {
     width: 500px;
+    height: max-content;
     position: relative;
     font-size: 21px;
     font-family: sans-serif;
     margin-top: 7px;
     transform: translateX(100px) translateY(42px);
     text-overflow: ellipsis;
+
 }
 
 

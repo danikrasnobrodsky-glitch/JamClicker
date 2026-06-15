@@ -2,9 +2,15 @@ import { send } from "clientUtilities";
 import { get } from "componentUtilities";
 
 var backButton = get("div", "backButton");
+
 var points = get("div", "points");
 let score: number = 0;
 var token = localStorage.getItem("userToken");
+
+var Buy1 = get("button", "buy1");
+var Item1 = get("div", "Item1");
+
+var hasPurchasedBuy1 = await send<boolean>("getDoubleClick", token);
 
 // --- Times that I brought it ---
 let pointsPerSecond5: number = 0;
@@ -63,6 +69,35 @@ if (lastLoginFarm > 0) {
         await send("addScore", token, pointsPerSecond7);
     }, 1000);
 }
+
+
+
+
+
+if (hasPurchasedBuy1) {
+    Item1?.remove();
+}
+
+Buy1?.addEventListener("click", async () => {
+    if (score >= 150) {
+        // Deduct points locally and on the server
+        score -= 150;
+        points.innerText = score + "₹";
+        await send("addScore", token, -150); 
+
+        // Tell the server this upgrade is now purchased permanently
+        await send("addDoubleClick", token);
+
+        // Run fade animation and remove item from the screen
+        Item1?.classList.add("collapse-and-fade");
+        setTimeout(() => {
+            Item1?.remove();
+        }, 400);
+    } else {
+        alert("You need at least 150₹ to buy this item!");
+    }
+});
+
 
 
 

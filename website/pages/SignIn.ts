@@ -1,10 +1,12 @@
 import { send } from "clientUtilities";
+import { get } from "componentUtilities";
 
 var UsernameInput = document.querySelector<HTMLInputElement>("#UserName")!;
 var PasswordInput = document.querySelector<HTMLInputElement>("#PassWord")!;
 var LoginSubmitButton = document.querySelector<HTMLButtonElement>("#Button1")!;
 var ErrorMessage = document.querySelector<HTMLParagraphElement>("#ErrorMessage")!;
 const toggleBtn = document.getElementById("togglePassword") as HTMLButtonElement;
+var backButton = get("div", "backButton");
 
 var errorTimeout: number | null = null;
 
@@ -53,3 +55,9 @@ toggleBtn.addEventListener("click", () => {
         toggleBtn.textContent = "╱";
     }
 });
+
+if (backButton) {
+    backButton.onclick = function () {
+        window.location.href = 'FirstPage.html';
+    };
+}
