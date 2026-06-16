@@ -198,7 +198,7 @@ body {
     transform: translateY(8px) translateX(-6px);
 }
 
-#img7 {
+#img7, #img8 {
     position: absolute;
     height: 80%;
     width: auto;
@@ -207,7 +207,7 @@ body {
     transform: translateY(9px) translateX(-8px);
 }
 
-#item-name5, #item-name6, #item-name7 {
+#item-name5, #item-name6, #item-name7, #item-name8 {
     position: absolute;
     font-family: sans-serif;
     font-size: 1.1rem;
@@ -223,7 +223,7 @@ body {
 
 }  
 
-#Info5, #Info6, #Info7 {
+#Info5, #Info6, #Info7, #Info8 {
     position: absolute;
     font-size: 17px;
     font-family: sans-serif;
@@ -232,7 +232,7 @@ body {
 
 }
 
-#Summery5, #Summery6, #Summery7 {
+#Summery5, #Summery6, #Summery7, #Summery8 {
     font-size: 17px;
     font-family: sans-serif;
     margin-top: 50px;
@@ -260,7 +260,7 @@ body {
     cursor: pointer;
 }
 
-#Price5, #Price6, #Price7 {
+#Price5, #Price6, #Price7, #Price8 {
     z-index: 5;
     display: flex;
     justify-content: center;
@@ -290,7 +290,7 @@ body {
     transform: translateX(20px)
 }
 
-#Stand5, #Stand6, #Stand7 {
+#Stand5, #Stand6, #Stand7, #Stand8 {
     position: absolute;
     height: 100%;
     width: 6%;

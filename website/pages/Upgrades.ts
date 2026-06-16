@@ -80,21 +80,16 @@ if (hasPurchasedBuy1) {
 
 Buy1?.addEventListener("click", async () => {
     if (score >= 150) {
-        // Deduct points locally and on the server
         score -= 150;
         points.innerText = score + "₹";
         await send("addScore", token, -150); 
 
-        // Tell the server this upgrade is now purchased permanently
+
         await send("addDoubleClick", token);
 
-        // Run fade animation and remove item from the screen
-        Item1?.classList.add("collapse-and-fade");
         setTimeout(() => {
             Item1?.remove();
-        }, 400);
-    } else {
-        alert("You need at least 150₹ to buy this item!");
+        }, 100);
     }
 });
 

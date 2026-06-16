@@ -118,6 +118,11 @@ class Program
           }
         }
 
+        else if (request.Name == "getTopTen")
+        {
+            var topPlayers = database.Users.OrderByDescending(u => u.Score).Take(10).Select(u => new { u.Username, u.Score }).ToArray();
+            request.Respond(topPlayers);
+        }
 
         else if (request.Name == "addCursorItem")
         {
@@ -181,6 +186,25 @@ class Program
           request.Respond(userFarm);
         }
 
+        else if (request.Name == "addVillageItem")
+        {
+          var (token, village) = request.GetParams<(string, int)>();
+          var user = database.Users.FirstOrDefault(u => u.UserToken == token);
+
+          if (user != null)
+          {
+            user.Village += village;
+
+            database.SaveChanges();
+          }
+        }
+        else if (request.Name == "getVillageItem")
+        {
+          var token = request.GetParams<string>();
+          var userVillage = database.Users.FirstOrDefault(s => s.UserToken == token)!.Village; 
+          request.Respond(userVillage);
+        }
+
 
         else if (request.Name == "addDoubleClick")
         {
@@ -232,6 +256,7 @@ class User(string username, string password, string userToken)
   public int Cursor { get; set; } = 0;
   public int Grandma { get; set; } = 0;
   public int Farm { get; set; } = 0;
+  public int Village { get; set; } = 0;
 
   public bool DoubleClick { get; set; } = false;
 }
@@ -264,6 +289,14 @@ class FarmItem(int farms, int userId)
 {
   public int Id { get; set; } = default!;
   public int Farms { get; set; } = farms;
+  public int UserId { get; set; } = userId;
+  public User User { get; set; } = default!;
+}
+
+class VillageItem(int villages, int userId)
+{
+  public int Id { get; set; } = default!;
+  public int Villages { get; set; } = villages;
   public int UserId { get; set; } = userId;
   public User User { get; set; } = default!;
 }

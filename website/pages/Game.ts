@@ -22,13 +22,15 @@ var profileOverlay = document.getElementById("profileOverlay") as HTMLDivElement
 var logoutBtn = document.getElementById("logoutBtn") as HTMLButtonElement;
 
 let score: number = 0;
-var cooldownTime = 100;
+var cooldownTime = 90;
 var token = localStorage.getItem("userToken");
+
 
 // --- Times that I bought it ---
 let pointsPerSecond5: number = 0;
 let pointsPerSecond6: number = 0;
 let pointsPerSecond7: number = 0;
+let pointsPerSecond8: number = 0;
 
 
 var NameDiv = get("div", "usernameDisplay");
@@ -134,8 +136,6 @@ async function loadPassword() {
 await loadPassword();
 
 
-
-// --- Achievement Checker ---
 function updateAchievementsColor() {
     if (!Arch1) return;
     if (score >= 1000) {
@@ -181,7 +181,6 @@ profileOverlay.addEventListener("click", (event) => {
 });
 
 
-
 logoutBtn.addEventListener("click", () => {
     window.location.href = 'SignIn.html';
 
@@ -205,6 +204,7 @@ updateAchievementsColor();
 var lastLoginCursor = await send<number>("getCursorItem", token);
 var lastLoginGrandma = await send<number>("getGrandmaItem", token);
 var lastLoginFarm = await send<number>("getFarmItem", token);
+var lastLoginVillage = await send<number>("getVillageItem", token);
 
 if (lastLoginCursor > 0) {
     pointsPerSecond5 = lastLoginCursor * 1; 
@@ -212,33 +212,45 @@ if (lastLoginCursor > 0) {
     setInterval(async () => {
         score += pointsPerSecond5;
         points.innerText = score + "₹";
-        updateAchievementsColor(); // Keep updated live
+        updateAchievementsColor();
 
         await send("addScore", token, pointsPerSecond5);
     }, 1000);
 }
 
 if (lastLoginGrandma > 0) {
-    pointsPerSecond6 = lastLoginGrandma * 1; 
+    pointsPerSecond6 = lastLoginGrandma * 2; 
     
     setInterval(async () => {
         score += pointsPerSecond6;
         points.innerText = score + "₹";
-        updateAchievementsColor(); // Keep updated live
+        updateAchievementsColor();
         
         await send("addScore", token, pointsPerSecond6);
     }, 1000);
 }
 
 if (lastLoginFarm > 0) {
-    pointsPerSecond7 = lastLoginFarm * 1; 
+    pointsPerSecond7 = lastLoginFarm * 5; 
     
     setInterval(async () => {
         score += pointsPerSecond7;
         points.innerText = score + "₹";
-        updateAchievementsColor(); // Keep updated live
+        updateAchievementsColor();
         
         await send("addScore", token, pointsPerSecond7);
+    }, 1000);
+}
+
+if (lastLoginVillage > 0) {
+    pointsPerSecond8 = lastLoginVillage * 15; 
+    
+    setInterval(async () => {
+        score += pointsPerSecond8;
+        points.innerText = score + "₹";
+        updateAchievementsColor();
+        
+        await send("addScore", token, pointsPerSecond8);
     }, 1000);
 }
 
