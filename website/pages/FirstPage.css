@@ -136,12 +136,14 @@ body {
 
 
 #Credits {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
   position: relative;
   padding: 4px 37px;
   margin-top: 5px;
   border-radius: 13px;
   font-size: 14px;
-
+  font-family: Arial, Helvetica, sans-serif;
   border: 3px solid transparent;
   background-image: linear-gradient(rgb(226, 226, 226)), linear-gradient(to right, #e7a2a2, #d49abf);
   background-origin: border-box;
