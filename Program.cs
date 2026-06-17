@@ -8,7 +8,9 @@ using Project.ServerUtilities;
 
 class Program
 {
-  static void Main()
+
+
+    static void Main()
   {
     int port = 5000;
 
@@ -85,6 +87,36 @@ class Program
             {
                 request.Respond(user.Password);
             }
+        }
+        else if (request.Name == "getSelectLocation")
+        {
+            var token = request.GetParams<string>();
+
+            var user = database.Users.FirstOrDefault(u => u.UserToken == token);
+
+            if (user == null)
+            {
+                request.Respond<string?>(null);
+            }
+            else
+            {
+                request.Respond(user.SelectLocation);
+            }
+        }
+        else if (request.Name == "addSelectLocation")
+        {
+          var (token, selectlocation) = request.GetParams<(string, string)>();
+          var user = database.Users.FirstOrDefault(u => u.UserToken == token);
+
+          if (user != null)
+          {
+            user.SelectLocation = selectlocation;
+            database.SaveChanges();
+          }
+          else
+          {
+            request.SetStatusCode(400);
+          }
         }
 
         else if (request.Name == "addScore")
@@ -259,6 +291,10 @@ class User(string username, string password, string userToken)
   public int Village { get; set; } = 0;
 
   public bool DoubleClick { get; set; } = false;
+
+  public string SelectLocation { get; set; } = "----------";
+
+  
 }
 
 class Score(int points, int userId)
@@ -305,6 +341,14 @@ class DoubleClickUpgrade(bool doubleclick, int userId)
 {
   public int Id { get; set; } = default!;
   public bool DoubleClick { get; set; } = doubleclick;
+  public int UserId { get; set; } = userId;
+  public User User { get; set; } = default!;
+}
+
+class LocationSelector(string selectlocation, int userId)
+{
+  public int Id { get; set; } = default!;
+  public string SelectLocation { get; set; } = selectlocation;
   public int UserId { get; set; } = userId;
   public User User { get; set; } = default!;
 }

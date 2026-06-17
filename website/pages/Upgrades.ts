@@ -9,6 +9,9 @@ var token = localStorage.getItem("userToken");
 
 var Buy1 = get("button", "buy1");
 var Item1 = get("div", "Item1");
+var Cover1 = get("div", "Cover1");
+var Price1 = get("div", "Price1");
+
 
 var hasPurchasedBuy1 = await send<boolean>("getDoubleClick", token);
 
@@ -72,6 +75,14 @@ if (lastLoginFarm > 0) {
 
 
 
+    if (Cover1) {
+        if (score === null || score < 150) {
+            Cover1.classList.add("not-enough-points");
+        } else {
+            Cover1.classList.remove("not-enough-points");
+        }
+    }
+
 
 
 if (hasPurchasedBuy1) {
@@ -79,6 +90,19 @@ if (hasPurchasedBuy1) {
 }
 
 Buy1?.addEventListener("click", async () => {
+    if (score === null || score < 150) {
+    if (Price1) {
+            Price1.classList.remove("shake");
+            void Price1.offsetWidth;
+            Price1.classList.add("shake");
+    }
+    // if(sound){
+    //         sound.volume = 0.25;
+    //         sound.currentTime = 0;
+    //         sound.play();
+    // }
+    return;
+    }
     if (score >= 150) {
         score -= 150;
         points.innerText = score + "₹";
@@ -92,6 +116,7 @@ Buy1?.addEventListener("click", async () => {
         }, 100);
     }
 });
+
 
 
 

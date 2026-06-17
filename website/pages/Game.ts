@@ -7,14 +7,17 @@ var sound = get("audio", "click-sound");
 var Shop = get("button", "Shop");
 var Upgrades = get("button", "Upgrades");
 
-var openButton = get("button" , "openBtn1");
-var closeButton = get("button" , "closeBtn1");
+var openButton = get("button", "openBtn1");
+var closeButton = get("button", "closeBtn1");
 var popupOverlay = document.getElementById('popupOverlay') as HTMLDivElement;
 
 var Arch1 = get("div", "Ach1");
 var Arch2 = get("div", "Ach2");
 var Arch3 = get("div", "Ach3");
 var Arch4 = get("div", "Ach4");
+
+
+
 
 var openProfileBtn = get("button", "openBtn2");
 var closeProfileBtn = document.getElementById("closeProfileBtn") as HTMLButtonElement;
@@ -41,6 +44,8 @@ var PasswordDiv = get("div", "passwordDisplay");
 let clickPower: number = 1;
 var isBuy1Unlocked = await send<boolean>("getDoubleClick", token);
 
+
+
 if (isBuy1Unlocked) {
     clickPower = 2;
 }
@@ -65,7 +70,13 @@ BigJam.addEventListener('click', (event: MouseEvent): void => {
     }, 1200);
 });
 
+var Selector = get("select", "locationSelect");
+var LocationSelect = await send<string>("getSelectLocation", token);
+Selector.value = LocationSelect;
 
+Selector.addEventListener('change', (event: Event) => {
+    send("addSelectLocation", token, Selector.value)
+});
 
 
 BigJam.addEventListener('click', (): void => {
@@ -79,9 +90,9 @@ BigJam.addEventListener('click', (): void => {
     sound.volume = 0.55;
     sound.currentTime = 0;
     sound.play();
-    
 
-    void updateScore(clickPower); 
+
+    void updateScore(clickPower);
 });
 
 // --- Score Updates & Live Achievement Checking ---
@@ -93,7 +104,7 @@ async function updateScore(add: number) {
 
     score += add;
     points.innerText = score + "₹";
-    
+
 
     updateAchievementsColor();
 
@@ -150,7 +161,7 @@ function updateAchievementsColor() {
     } else {
         Arch2.classList.add("Achievements-locked");
     }
-    
+
     if (!Arch3) return;
     if (score >= 100000) {
         Arch3.classList.remove("Achievements-locked");
@@ -207,8 +218,8 @@ var lastLoginFarm = await send<number>("getFarmItem", token);
 var lastLoginVillage = await send<number>("getVillageItem", token);
 
 if (lastLoginCursor > 0) {
-    pointsPerSecond5 = lastLoginCursor * 1; 
-    
+    pointsPerSecond5 = lastLoginCursor * 1;
+
     setInterval(async () => {
         score += pointsPerSecond5;
         points.innerText = score + "₹";
@@ -219,64 +230,64 @@ if (lastLoginCursor > 0) {
 }
 
 if (lastLoginGrandma > 0) {
-    pointsPerSecond6 = lastLoginGrandma * 2; 
-    
+    pointsPerSecond6 = lastLoginGrandma * 2;
+
     setInterval(async () => {
         score += pointsPerSecond6;
         points.innerText = score + "₹";
         updateAchievementsColor();
-        
+
         await send("addScore", token, pointsPerSecond6);
     }, 1000);
 }
 
 if (lastLoginFarm > 0) {
-    pointsPerSecond7 = lastLoginFarm * 5; 
-    
+    pointsPerSecond7 = lastLoginFarm * 5;
+
     setInterval(async () => {
         score += pointsPerSecond7;
         points.innerText = score + "₹";
         updateAchievementsColor();
-        
+
         await send("addScore", token, pointsPerSecond7);
     }, 1000);
 }
 
 if (lastLoginVillage > 0) {
-    pointsPerSecond8 = lastLoginVillage * 15; 
-    
+    pointsPerSecond8 = lastLoginVillage * 15;
+
     setInterval(async () => {
         score += pointsPerSecond8;
         points.innerText = score + "₹";
         updateAchievementsColor();
-        
+
         await send("addScore", token, pointsPerSecond8);
     }, 1000);
 }
 
 // --- Modals / Popups ---
 const openPopup = (): void => {
-  popupOverlay.classList.remove('hidden');
+    popupOverlay.classList.remove('hidden');
 };
 
 const closePopup = (): void => {
-  popupOverlay.classList.add('hidden');
+    popupOverlay.classList.add('hidden');
 };
 
 openButton.addEventListener('click', openPopup);
 closeButton.addEventListener('click', closePopup);
 
 popupOverlay.addEventListener('click', (event: MouseEvent) => {
-  if (event.target === popupOverlay) {
-    closePopup();
-  }
+    if (event.target === popupOverlay) {
+        closePopup();
+    }
 });
 
 // --- Navigation ---
-Shop.onclick = function() {
+Shop.onclick = function () {
     window.location.href = 'Store.html';
 };
 
-Upgrades.onclick = function() {
+Upgrades.onclick = function () {
     window.location.href = 'Upgrades.html';
 };
